@@ -69,7 +69,7 @@ jobs:
         run: |
           echo "📦 Verificando vulnerabilidades en dependencias..."
           pip freeze > installed-deps.txt
-          safety check --file=installed-deps.txt --json --output safety-report.json || true
+          safety check --file=installed-deps.txt --output screen || true
           echo "✅ Auditoría Safety completada"
       
       - name: 📤 Subir reportes como artifacts
