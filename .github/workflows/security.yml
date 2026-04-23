@@ -61,7 +61,8 @@ jobs:
         run: |
           echo "🔍 Ejecutando Bandit (SAST)..."
           bandit -r . -f json -o bandit-report.json || true
-          bandit -r . -f txt -o bandit-report.txt || true
+          echo "📊 Resumen de Bandit:"
+          bandit -r . -f txt -o - || true  # <-- Esta línea imprime el resumen en el log
           echo "✅ Escaneo Bandit completado"
       
       - name: 📋 Safety - Auditoría de dependencias
