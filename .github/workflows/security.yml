@@ -87,7 +87,7 @@ jobs:
   container-scan:
     name: 🐳 Container Security
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.run_container_scan != 'false' }}
+    if: always()
     steps:
       - name: 📥 Checkout código
         uses: actions/checkout@v4
