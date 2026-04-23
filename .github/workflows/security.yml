@@ -88,6 +88,9 @@ jobs:
     name: 🐳 Container Security
     runs-on: ubuntu-latest
     if: always()
+    permissions:
+      contents: read
+      security-events: write
     steps:
       - name: 📥 Checkout código
         uses: actions/checkout@v4
@@ -96,7 +99,7 @@ jobs:
         run: docker build -t devsecops-demo:${{ github.sha }} .
       
       - name: 🔬 Trivy - Escanear vulnerabilidades en imagen
-        uses: aquasecurity/trivy-action@0.24.0
+        uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'devsecops-demo:${{ github.sha }}'
           format: 'sarif'
